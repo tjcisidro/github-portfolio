@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,6 +10,8 @@ import {
     CardContent
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
+import useMediaQuery from "@/hook/useMediaQuery";
 const socials = [
     {
         name: "Github",
@@ -29,26 +32,32 @@ const socials = [
 ]
 
 export const Profile = () => {
+    const isDesktopOrLaptop = useMediaQuery("(min-width: 1224px)");
+
     return (
         <Card>
             <CardContent className="pt-6">
                 <div className="flex flex-col items-start gap-2 ">
-                    <div className="flex flex-row md:flex-col items-center md:items-start w-full gap-4">
-                        <Image
-                            width={150}
-                            height={150}
-                            quality={100}
-                            src="/avatar.svg"
-                            alt="Profile Picture"
-                            className="rounded-full size-12 md:w-full h-auto object-cover border-2"
-                        />
-                        <div className="flex flex-col items-start justify-center">
-                            <h1 className="font-bold md:mt-4 text-xl md:text-2xl">Chris Lonzo</h1>
-                            <p className="text-sm md:text-base text-muted-foreground">
-                                Solopreneur Developer
-                            </p>
+                    <div className="w-full flex flex-row justify-between items-top ">
+                        <div className="flex flex-row md:flex-col items-center md:items-start w-full gap-4">
+                            <Image
+                                width={150}
+                                height={150}
+                                quality={100}
+                                src="/avatar.svg"
+                                alt="Profile Picture"
+                                className="rounded-full size-12 md:w-full h-auto object-cover border-2"
+                            />
+                            <div className="flex flex-col items-start justify-center">
+                                <h1 className="font-bold md:mt-4 text-xl md:text-2xl">Chris Lonzo</h1>
+                                <p className="text-sm md:text-base text-muted-foreground">
+                                    Solopreneur Developer
+                                </p>
+                            </div>
                         </div>
+                        {!isDesktopOrLaptop && <ThemeSwitcher />}
                     </div>
+
                     <p className="mt-2 text-start text-sm text-muted-foreground">
                         I am a solopreneur developer with a passion for building products that solve real-world problems.
                     </p>
