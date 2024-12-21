@@ -1,5 +1,7 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
+import useMediaQuery from "@/hook/useMediaQuery";
 
 import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -9,42 +11,54 @@ import {
     CardContent
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 
-const socials = [{
-    name: "X (Twitter)",
-    icon: <FaXTwitter className="size-4" />,
-    link: "https://x.com/lonz_chris",
-}, {
-    name: "GitHub",
-    icon: <FaGithub className="size-4" />,
-    link: "https://github.com/achris-alonzo30",
-}, {
-    name: "LinkedIn",
-    icon: <FaLinkedin className="size-4" />,
-    link: "https://www.linkedin.com/in/lonzochris",
-}]
+const socials = [
+    {
+        name: "Github",
+        link: "https://github.com/achris-alonzo30",
+        icon: <FaGithub className="size-4" />
+    },
+    {
+        name: "LinkedIn",
+        link: "https://linkedin.com/in/lonzochris",
+        icon: <FaLinkedin className="size-4" />
+    },
+    {
+        name: "X (Twitter)",
+        link: "https://x.com/lonz_chris",
+        icon: <FaXTwitter className="size-4" />
+    }
+    // TODO: Add more socials here
+]
 
 export const Profile = () => {
+    const isDesktopOrLaptop = useMediaQuery("(min-width: 1224px)");
+
     return (
         <Card>
             <CardContent className="pt-6">
                 <div className="flex flex-col items-start gap-2 ">
-                    <div className="flex felx-row md:flex-col items-center md:items-start w-full gap-4">
-                        <Image
-                            width={100}
-                            height={100}
-                            quality={100}
-                            src="/avatar.svg"
-                            alt="Profile Picture"
-                            className="rounded-full size-12 md:w-full md:h-auto object-cover border-2"
-                        />
-                        <div className="flex flex-col items-start justify-center">
-                            <h1 className="md:mt-4 text-xl md:text-2xl font-bold">Your Avatar</h1>
-                            <p className="text-sm md:text-base text-muted-foreground font-medium">
-                                Your Title
-                            </p>
+                    <div className="w-full flex flex-row justify-between items-top ">
+                        <div className="flex flex-row md:flex-col items-center md:items-start w-full gap-4">
+                            <Image
+                                width={150}
+                                height={150}
+                                quality={100}
+                                src="/avatar.svg"
+                                alt="Profile Picture"
+                                className="rounded-full size-12 md:w-full h-auto object-cover border-2"
+                            />
+                            <div className="flex flex-col items-start justify-center">
+                                <h1 className="font-bold md:mt-4 text-xl md:text-2xl">Chris Lonzo</h1>
+                                <p className="text-sm md:text-base text-muted-foreground">
+                                    Solopreneur Developer
+                                </p>
+                            </div>
                         </div>
+                        {!isDesktopOrLaptop && <ThemeSwitcher />}
                     </div>
+
                     <p className="mt-2 text-start text-sm text-muted-foreground">
                         I am a software engineer with a passion for building products that help people live better lives.
                     </p>
