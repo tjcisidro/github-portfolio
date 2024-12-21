@@ -1,11 +1,11 @@
 import {
     Card,
-    CardTitle,
     CardHeader,
-    CardContent,
+    CardTitle,
+    CardContent
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
+// TODO: Update skills
 const skills = ["TypeScript", "JavaScript", "Python", "Java", "C#", "C++", "C", "SQL", "HTML", "CSS", "TailwindCSS", "NextJS", "ReactJS", "NodeJS", "ExpressJS", "MongoDB", "PostgreSQL", "Git", "Docker", "Kubernetes", "Linux", "Windows", "MacOS"]
 
 export const Skills = () => {
@@ -17,9 +17,7 @@ export const Skills = () => {
             <CardContent>
                 <div className="flex flex-wrap gap-2">
                     {skills.map((s, i) => (
-                        <Badge key={i} variant="secondary">
-                            {s}
-                        </Badge>
+                        <Badge key={i} variant="secondary">{s}</Badge>
                     ))}
                 </div>
             </CardContent>
