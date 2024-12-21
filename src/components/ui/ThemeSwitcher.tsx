@@ -1,14 +1,17 @@
 'use client';
 
+import { cn } from "@/lib/utils";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+
+
 import {
   SunIcon,
   MoonIcon,
   Half2Icon,
 } from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+
 
 // Theme options
 const themes = [
@@ -17,11 +20,9 @@ const themes = [
   { key: "inherit", label: "System", icon: <Half2Icon /> },
 ];
 
-// Props interface (placeholder for extensibility)
-interface Props {}
 
 // Main component
-const ThemeSwitcher: React.FC<Props> = () => {
+const ThemeSwitcher = () => {
   const [preferredTheme, setPreferredTheme] = useState<string | null>(null);
   const { theme, setTheme } = useTheme();
 
