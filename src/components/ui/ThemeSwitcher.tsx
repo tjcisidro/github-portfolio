@@ -7,7 +7,7 @@ import {
   MoonIcon,
   Half2Icon,
 } from "@radix-ui/react-icons";
-import cx from "classnames";
+import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 // Theme options
@@ -50,7 +50,7 @@ const ThemeSwitcher: React.FC<Props> = () => {
       <DropdownMenuPrimitive.Root>
         {/* Trigger Button */}
         <DropdownMenuPrimitive.Trigger
-          className={cx(
+          className={cn(
             "inline-flex select-none justify-center rounded-md px-2.5 py-2 text-sm font-medium",
             "bg-white text-gray-900 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-100 hover:dark:bg-gray-600",
             "border border-gray-300 dark:border-transparent",
@@ -66,7 +66,7 @@ const ThemeSwitcher: React.FC<Props> = () => {
           <DropdownMenuPrimitive.Content
             align="end"
             sideOffset={5}
-            className={cx(
+            className={cn(
               "radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
               "w-48 rounded-lg px-1.5 py-1 shadow-md md:w-56",
               "bg-gray-50 dark:bg-gray-700"
@@ -75,7 +75,7 @@ const ThemeSwitcher: React.FC<Props> = () => {
             {themes.map(({ key, label, icon }) => (
               <DropdownMenuPrimitive.Item
                 key={key}
-                className={cx(
+                className={cn(
                   "flex w-full cursor-pointer select-none items-center rounded-md px-2 py-2 text-xs outline-none",
                   "text-gray-500 focus:bg-gray-200 dark:text-gray-400 dark:focus:bg-gray-800"
                 )}
